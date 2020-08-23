@@ -1,4 +1,4 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="Keyword_match" mva:VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="787,1073" sap2010:WorkflowViewState.IdRef="Keyword_match_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:str="clr-namespace:System.Text.RegularExpressions;assembly=System" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="Keyword_match" mva:VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="841,2545" sap2010:WorkflowViewState.IdRef="Keyword_match_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:str="clr-namespace:System.Text.RegularExpressions;assembly=System" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="22">
       <x:String>System.Activities</x:String>
@@ -26,7 +26,7 @@
     </scg:List>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
-    <scg:List x:TypeArguments="AssemblyReference" Capacity="16">
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="17">
       <AssemblyReference>System.Activities</AssemblyReference>
       <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
       <AssemblyReference>mscorlib</AssemblyReference>
@@ -43,51 +43,124 @@
       <AssemblyReference>System.Xaml</AssemblyReference>
       <AssemblyReference>UiPath.System.Activities</AssemblyReference>
       <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="Keyword_match" sap:VirtualizedContainerService.HintSize="797,908" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="Keyword_match" sap:VirtualizedContainerService.HintSize="839,2380" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="StrFerDel" />
       <Variable x:TypeArguments="scg:IEnumerable(str:Match)" Name="ItemDate" />
       <Variable x:TypeArguments="scg:IEnumerable(str:Match)" Name="itemLicPlate" />
+      <Variable x:TypeArguments="x:String" Name="order" />
+      <Variable x:TypeArguments="scg:IEnumerable(str:Match)" Name="o1" />
+      <Variable x:TypeArguments="scg:IEnumerable(str:Match)" Name="o2" />
+      <Variable x:TypeArguments="scg:IEnumerable(str:Match)" Name="o3" />
+      <Variable x:TypeArguments="scg:IEnumerable(str:Match)" Name="o4" />
+      <Variable x:TypeArguments="scg:IEnumerable(str:Match)" Name="o5" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:ReadTextFile Content="[StrFerDel]" DisplayName="Read Text File" FileName="Ferrari Delivery Mail.txt" sap:VirtualizedContainerService.HintSize="755,79" sap2010:WorkflowViewState.IdRef="ReadTextFile_1" />
-    <ui:Matches BuilderPattern="\d{2}/\d{2}/\d{4}" sap:VirtualizedContainerService.HintSize="755,59" sap2010:WorkflowViewState.IdRef="Matches_1" Input="[StrFerDel]" IsBuilderTabModified="True" Model="[{&quot;Index&quot;:0,&quot;OperationID&quot;:&quot;ADV&quot;,&quot;OperationName&quot;:&quot;Advanced&quot;,&quot;OperationValue&quot;:&quot;\\d{2}\/\\d{2}\/\\d{4}&quot;,&quot;QuantifierFirstValue&quot;:&quot;1&quot;,&quot;QuantifierID&quot;:&quot;EXT&quot;,&quot;QuantifierName&quot;:&quot;Exactly&quot;,&quot;QuantifierSecondValue&quot;:null}]" Pattern="\d{2}/\d{2}/\d{4}" RegexOption="IgnoreCase" Result="[ItemDate]" />
-    <ui:Matches BuilderPattern="\w{2} \d{5}" sap:VirtualizedContainerService.HintSize="755,59" sap2010:WorkflowViewState.IdRef="Matches_2" Input="[StrFerDel]" IsBuilderTabModified="True" Model="[{&quot;Index&quot;:0,&quot;OperationID&quot;:&quot;ADV&quot;,&quot;OperationName&quot;:&quot;Advanced&quot;,&quot;OperationValue&quot;:&quot;\\w{2} \\d{5}&quot;,&quot;QuantifierFirstValue&quot;:&quot;1&quot;,&quot;QuantifierID&quot;:&quot;EXT&quot;,&quot;QuantifierName&quot;:&quot;Exactly&quot;,&quot;QuantifierSecondValue&quot;:null}]" Pattern="\w{2} \d{5}" RegexOption="IgnoreCase" Result="[itemLicPlate]" />
-    <If Condition="[ItemDate.Count &gt; 0 And itemLicPlate.Count &gt; 0]" sap:VirtualizedContainerService.HintSize="755,499" sap2010:WorkflowViewState.IdRef="If_1">
+    <ui:ReadTextFile Content="[StrFerDel]" DisplayName="Read Text File" FileName="Ferrari Delivery Mail.txt" sap:VirtualizedContainerService.HintSize="797,80" sap2010:WorkflowViewState.IdRef="ReadTextFile_1" />
+    <ui:Matches BuilderPattern="\d{2}/\d{2}/\d{4}" sap:VirtualizedContainerService.HintSize="797,59" sap2010:WorkflowViewState.IdRef="Matches_1" Input="[StrFerDel]" IsBuilderTabModified="True" Model="[{&quot;Index&quot;:0,&quot;OperationID&quot;:&quot;ADV&quot;,&quot;OperationName&quot;:&quot;Advanced&quot;,&quot;OperationValue&quot;:&quot;\\d{2}\/\\d{2}\/\\d{4}&quot;,&quot;QuantifierFirstValue&quot;:&quot;1&quot;,&quot;QuantifierID&quot;:&quot;EXT&quot;,&quot;QuantifierName&quot;:&quot;Exactly&quot;,&quot;QuantifierSecondValue&quot;:null}]" Pattern="\d{2}/\d{2}/\d{4}" RegexOption="IgnoreCase" Result="[ItemDate]" />
+    <ui:Matches BuilderPattern="\w{2} \d{5}" sap:VirtualizedContainerService.HintSize="797,59" sap2010:WorkflowViewState.IdRef="Matches_2" Input="[StrFerDel]" IsBuilderTabModified="True" Model="[{&quot;Index&quot;:0,&quot;OperationID&quot;:&quot;ADV&quot;,&quot;OperationName&quot;:&quot;Advanced&quot;,&quot;OperationValue&quot;:&quot;\\w{2} \\d{5}&quot;,&quot;QuantifierFirstValue&quot;:&quot;1&quot;,&quot;QuantifierID&quot;:&quot;EXT&quot;,&quot;QuantifierName&quot;:&quot;Exactly&quot;,&quot;QuantifierSecondValue&quot;:null}]" Pattern="\w{2} \d{5}" RegexOption="IgnoreCase" Result="[itemLicPlate]" />
+    <ui:ReadTextFile Content="[order]" DisplayName="Read Text File" FileName="FAQ FlipKart Order.txt" sap:VirtualizedContainerService.HintSize="797,80" sap2010:WorkflowViewState.IdRef="ReadTextFile_2" />
+    <ui:Matches BuilderPattern="\b(\w*I missed the delivery of my order today. What should I do\w*)\b" sap:VirtualizedContainerService.HintSize="797,59" sap2010:WorkflowViewState.IdRef="Matches_3" Input="[order]" IsBuilderTabModified="True" Model="[{&quot;Index&quot;:0,&quot;OperationID&quot;:&quot;ADV&quot;,&quot;OperationName&quot;:&quot;Advanced&quot;,&quot;OperationValue&quot;:&quot;\\b(\\w*I missed the delivery of my order today. What should I do\\w*)\\b&quot;,&quot;QuantifierFirstValue&quot;:&quot;1&quot;,&quot;QuantifierID&quot;:&quot;EXT&quot;,&quot;QuantifierName&quot;:&quot;Exactly&quot;,&quot;QuantifierSecondValue&quot;:null}]" Pattern="\b(\w*I missed the delivery of my order today. What should I do\w*)\b" RegexOption="IgnoreCase" Result="[o1]" />
+    <ui:Matches BuilderPattern="&quot;\b(\w*Will the delivery be tried again if I'm not able to collect my order the first time?\w*)\b&quot;" sap:VirtualizedContainerService.HintSize="797,59" sap2010:WorkflowViewState.IdRef="Matches_4" Input="[order]" IsBuilderTabModified="True" Model="[{&quot;Index&quot;:0,&quot;OperationID&quot;:&quot;ADV&quot;,&quot;OperationName&quot;:&quot;Advanced&quot;,&quot;OperationValue&quot;:&quot;\&quot;\\b(\\w*Will the delivery be tried again if I'm not able to collect my order the first time?\\w*)\\b\&quot;&quot;,&quot;QuantifierFirstValue&quot;:&quot;1&quot;,&quot;QuantifierID&quot;:&quot;EXT&quot;,&quot;QuantifierName&quot;:&quot;Exactly&quot;,&quot;QuantifierSecondValue&quot;:null}]" Pattern="\b(\w*Will the delivery be tried again if I'm not able to collect my order the first time?\w*)\b" RegexOption="IgnoreCase" Result="[o2]" />
+    <ui:Matches BuilderPattern="\b(\w*3.The delivery of my order is delayed. What should I do?\w*)\b" sap:VirtualizedContainerService.HintSize="797,59" sap2010:WorkflowViewState.IdRef="Matches_5" Input="[order]" IsBuilderTabModified="True" Model="[{&quot;Index&quot;:0,&quot;OperationID&quot;:&quot;ADV&quot;,&quot;OperationName&quot;:&quot;Advanced&quot;,&quot;OperationValue&quot;:&quot;\\b(\\w*3.The delivery of my order is delayed. What should I do?\\w*)\\b&quot;,&quot;QuantifierFirstValue&quot;:&quot;1&quot;,&quot;QuantifierID&quot;:&quot;EXT&quot;,&quot;QuantifierName&quot;:&quot;Exactly&quot;,&quot;QuantifierSecondValue&quot;:null}]" Pattern="\b(\w*3.The delivery of my order is delayed. What should I do?\w*)\b" RegexOption="IgnoreCase" Result="[o3]" />
+    <ui:Matches BuilderPattern="\b(\w*4.What should I do if my order is approved but hasn't been shipped yet?\w*)\b" sap:VirtualizedContainerService.HintSize="797,59" sap2010:WorkflowViewState.IdRef="Matches_6" Input="[order]" IsBuilderTabModified="True" Model="[{&quot;Index&quot;:0,&quot;OperationID&quot;:&quot;ADV&quot;,&quot;OperationName&quot;:&quot;Advanced&quot;,&quot;OperationValue&quot;:&quot;\\b(\\w*4.What should I do if my order is approved but hasn't been shipped yet?\\w*)\\b&quot;,&quot;QuantifierFirstValue&quot;:&quot;1&quot;,&quot;QuantifierID&quot;:&quot;EXT&quot;,&quot;QuantifierName&quot;:&quot;Exactly&quot;,&quot;QuantifierSecondValue&quot;:null}]" Pattern="\b(\w*4.What should I do if my order is approved but hasn't been shipped yet?\w*)\b" RegexOption="IgnoreCase" Result="[o4]" />
+    <ui:Matches BuilderPattern="\b(\w*5.Can I take the shipment after opening and checking the contents inside?\w*)\b" sap:VirtualizedContainerService.HintSize="797,59" sap2010:WorkflowViewState.IdRef="Matches_7" Input="[order]" IsBuilderTabModified="True" Model="[{&quot;Index&quot;:0,&quot;OperationID&quot;:&quot;ADV&quot;,&quot;OperationName&quot;:&quot;Advanced&quot;,&quot;OperationValue&quot;:&quot;\\b(\\w*5.Can I take the shipment after opening and checking the contents inside?\\w*)\\b&quot;,&quot;QuantifierFirstValue&quot;:&quot;1&quot;,&quot;QuantifierID&quot;:&quot;EXT&quot;,&quot;QuantifierName&quot;:&quot;Exactly&quot;,&quot;QuantifierSecondValue&quot;:null}]" Pattern="\b(\w*5.Can I take the shipment after opening and checking the contents inside?\w*)\b" RegexOption="IgnoreCase" Result="[o5]" />
+    <Switch x:TypeArguments="x:Int32" DisplayName="Switch" sap:VirtualizedContainerService.HintSize="797,222" sap2010:WorkflowViewState.IdRef="Switch`1_1" />
+    <If Condition="[ItemDate.Count &gt; 0 And itemLicPlate.Count &gt; 0]" sap:VirtualizedContainerService.HintSize="797,1093" sap2010:WorkflowViewState.IdRef="If_1">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
       <If.Then>
-        <Sequence sap:VirtualizedContainerService.HintSize="376,351" sap2010:WorkflowViewState.IdRef="Sequence_2">
-          <Sequence.Variables>
-            <Variable x:TypeArguments="x:String" Name="strLicpla" />
-            <Variable x:TypeArguments="x:String" Name="strdate" />
-          </Sequence.Variables>
+        <Sequence DisplayName="Sequence" sap:VirtualizedContainerService.HintSize="418,943" sap2010:WorkflowViewState.IdRef="Sequence_3">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <Assign sap:VirtualizedContainerService.HintSize="334,60" sap2010:WorkflowViewState.IdRef="Assign_1">
-            <Assign.To>
-              <OutArgument x:TypeArguments="x:String">[strdate]</OutArgument>
-            </Assign.To>
-            <Assign.Value>
-              <InArgument x:TypeArguments="x:String">[ItemDate(0).Value]</InArgument>
-            </Assign.Value>
-          </Assign>
-          <Assign sap:VirtualizedContainerService.HintSize="334,60" sap2010:WorkflowViewState.IdRef="Assign_2">
-            <Assign.To>
-              <OutArgument x:TypeArguments="x:String">[strLicpla]</OutArgument>
-            </Assign.To>
-            <Assign.Value>
-              <InArgument x:TypeArguments="x:String">[itemLicPlate(0).Value]</InArgument>
-            </Assign.Value>
-          </Assign>
-          <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" DisplayName="Message Box" sap:VirtualizedContainerService.HintSize="334,59" sap2010:WorkflowViewState.IdRef="MessageBox_2" Text="[&quot;The Car With The Licence &quot; + strLicpla + &quot; is expected to delivered at &quot; + strdate]" />
+          <Sequence sap:VirtualizedContainerService.HintSize="376,851" sap2010:WorkflowViewState.IdRef="Sequence_2">
+            <Sequence.Variables>
+              <Variable x:TypeArguments="x:String" Name="strLicpla" />
+              <Variable x:TypeArguments="x:String" Name="strdate" />
+              <Variable x:TypeArguments="x:String" Name="strO1" />
+              <Variable x:TypeArguments="x:String" Name="strO2" />
+              <Variable x:TypeArguments="x:String" Name="strO3" />
+              <Variable x:TypeArguments="x:String" Name="strO4" />
+              <Variable x:TypeArguments="x:String" Name="strO5" />
+            </Sequence.Variables>
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <Assign sap:VirtualizedContainerService.HintSize="334,60" sap2010:WorkflowViewState.IdRef="Assign_1">
+              <Assign.To>
+                <OutArgument x:TypeArguments="x:String">[strdate]</OutArgument>
+              </Assign.To>
+              <Assign.Value>
+                <InArgument x:TypeArguments="x:String">[ItemDate(0).Value]</InArgument>
+              </Assign.Value>
+            </Assign>
+            <Assign sap:VirtualizedContainerService.HintSize="334,60" sap2010:WorkflowViewState.IdRef="Assign_2">
+              <Assign.To>
+                <OutArgument x:TypeArguments="x:String">[strLicpla]</OutArgument>
+              </Assign.To>
+              <Assign.Value>
+                <InArgument x:TypeArguments="x:String">[itemLicPlate(0).Value]</InArgument>
+              </Assign.Value>
+            </Assign>
+            <Assign sap:VirtualizedContainerService.HintSize="334,60" sap2010:WorkflowViewState.IdRef="Assign_3">
+              <Assign.To>
+                <OutArgument x:TypeArguments="x:String">[strO1]</OutArgument>
+              </Assign.To>
+              <Assign.Value>
+                <InArgument x:TypeArguments="x:String">[o1(0).Value]</InArgument>
+              </Assign.Value>
+            </Assign>
+            <Assign sap:VirtualizedContainerService.HintSize="334,60" sap2010:WorkflowViewState.IdRef="Assign_4">
+              <Assign.To>
+                <OutArgument x:TypeArguments="x:String">[strO2]</OutArgument>
+              </Assign.To>
+              <Assign.Value>
+                <InArgument x:TypeArguments="x:String">[o2(0).Value]</InArgument>
+              </Assign.Value>
+            </Assign>
+            <Assign sap:VirtualizedContainerService.HintSize="334,60" sap2010:WorkflowViewState.IdRef="Assign_5">
+              <Assign.To>
+                <OutArgument x:TypeArguments="x:String">[strO3]</OutArgument>
+              </Assign.To>
+              <Assign.Value>
+                <InArgument x:TypeArguments="x:String">[o3(0).Value]</InArgument>
+              </Assign.Value>
+            </Assign>
+            <Assign sap:VirtualizedContainerService.HintSize="334,60" sap2010:WorkflowViewState.IdRef="Assign_6">
+              <Assign.To>
+                <OutArgument x:TypeArguments="x:String">[strO4]</OutArgument>
+              </Assign.To>
+              <Assign.Value>
+                <InArgument x:TypeArguments="x:String">[o4(0).value]</InArgument>
+              </Assign.Value>
+            </Assign>
+            <Assign sap:VirtualizedContainerService.HintSize="334,60" sap2010:WorkflowViewState.IdRef="Assign_7">
+              <Assign.To>
+                <OutArgument x:TypeArguments="x:String">[strO5]</OutArgument>
+              </Assign.To>
+              <Assign.Value>
+                <InArgument x:TypeArguments="x:String">[o5(0).value]</InArgument>
+              </Assign.Value>
+            </Assign>
+            <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" DisplayName="Message Box" sap:VirtualizedContainerService.HintSize="334,59" sap2010:WorkflowViewState.IdRef="MessageBox_4" Text="[strO5]" />
+          </Sequence>
         </Sequence>
       </If.Then>
       <If.Else>
