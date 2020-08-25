@@ -1,4 +1,4 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="match_activity" mva:VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="736,801" sap2010:WorkflowViewState.IdRef="match_activity_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:av="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:str="clr-namespace:System.Text.RegularExpressions;assembly=System" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="match_activity" mva:VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="767,801" sap2010:WorkflowViewState.IdRef="match_activity_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:av="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:str="clr-namespace:System.Text.RegularExpressions;assembly=System" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="22">
       <x:String>System.Activities</x:String>
@@ -26,7 +26,7 @@
     </scg:List>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
-    <scg:List x:TypeArguments="AssemblyReference" Capacity="16">
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="24">
       <AssemblyReference>System.Activities</AssemblyReference>
       <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
       <AssemblyReference>mscorlib</AssemblyReference>
@@ -43,6 +43,14 @@
       <AssemblyReference>System.Xaml</AssemblyReference>
       <AssemblyReference>UiPath.System.Activities</AssemblyReference>
       <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
+      <AssemblyReference>System.ValueTuple</AssemblyReference>
+      <AssemblyReference>UiPath.CV</AssemblyReference>
+      <AssemblyReference>UiPath.Excel</AssemblyReference>
+      <AssemblyReference>UiPath.Mail</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
   <Flowchart DisplayName="match_activity" sap:VirtualizedContainerService.HintSize="634,636" sap2010:WorkflowViewState.IdRef="Flowchart_1">
@@ -64,29 +72,30 @@
           <av:Size x:Key="ShapeSize">200,66</av:Size>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
-      <Sequence DisplayName="match activity" sap:VirtualizedContainerService.HintSize="539,552" sap2010:WorkflowViewState.IdRef="Sequence_1">
+      <Sequence DisplayName="match activity" sap:VirtualizedContainerService.HintSize="621,1553" sap2010:WorkflowViewState.IdRef="Sequence_1">
         <Sequence.Variables>
           <Variable x:TypeArguments="x:String" Name="strnginput">
             <Variable.Default>
-              <Literal x:TypeArguments="x:String">is Return confirmed</Literal>
+              <Literal x:TypeArguments="x:String">is Order missed</Literal>
             </Variable.Default>
           </Variable>
           <Variable x:TypeArguments="x:String" Name="stringRegx">
             <Variable.Default>
-              <Literal x:TypeArguments="x:String">\b(\w*Return\w*)\b|\b(\w*order\w*)\b</Literal>
+              <Literal x:TypeArguments="x:String">\b(\w*Order\w*)\b</Literal>
             </Variable.Default>
           </Variable>
           <Variable x:TypeArguments="scg:IEnumerable(str:Match)" Name="itemoutput" />
           <Variable x:TypeArguments="x:String" Name="Outpt1" />
+          <Variable x:TypeArguments="x:String" Name="Output2" />
         </Sequence.Variables>
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
-        <ui:Matches sap:VirtualizedContainerService.HintSize="497,59" sap2010:WorkflowViewState.IdRef="Matches_1" Input="[strnginput]" IsBuilderTabModified="False" Pattern="[stringRegx]" RegexOption="IgnoreCase, Compiled" Result="[itemoutput]" />
-        <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="497,61" sap2010:WorkflowViewState.IdRef="WriteLine_1" Text="[itemoutput(0).value]" />
-        <Assign sap:VirtualizedContainerService.HintSize="497,60" sap2010:WorkflowViewState.IdRef="Assign_1">
+        <ui:Matches sap:VirtualizedContainerService.HintSize="579,59" sap2010:WorkflowViewState.IdRef="Matches_1" Input="[strnginput]" IsBuilderTabModified="False" Pattern="[stringRegx]" RegexOption="IgnoreCase, Compiled" Result="[itemoutput]" />
+        <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="579,61" sap2010:WorkflowViewState.IdRef="WriteLine_1" Text="[itemoutput(0).value]" />
+        <Assign sap:VirtualizedContainerService.HintSize="579,60" sap2010:WorkflowViewState.IdRef="Assign_1">
           <Assign.To>
             <OutArgument x:TypeArguments="x:String">[Outpt1]</OutArgument>
           </Assign.To>
@@ -94,8 +103,62 @@
             <InArgument x:TypeArguments="x:String">[itemoutput(0).value]</InArgument>
           </Assign.Value>
         </Assign>
-        <Switch x:TypeArguments="x:String" DisplayName="Switch" Expression="[Outpt1]" sap:VirtualizedContainerService.HintSize="497,266" sap2010:WorkflowViewState.IdRef="Switch`1_2">
-          <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" x:Key="order" sap:VirtualizedContainerService.HintSize="334,59" sap2010:WorkflowViewState.IdRef="MessageBox_3" Text="[&quot;order is Confirmed&quot;]" />
+        <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" DisplayName="Message Box" sap:VirtualizedContainerService.HintSize="579,59" sap2010:WorkflowViewState.IdRef="MessageBox_10" Text="[Outpt1]" />
+        <Switch x:TypeArguments="x:String" DisplayName="Switch" Expression="[Outpt1]" sap:VirtualizedContainerService.HintSize="579,1062" sap2010:WorkflowViewState.IdRef="Switch`1_2">
+          <Sequence x:Key="Order" sap:VirtualizedContainerService.HintSize="539,854" sap2010:WorkflowViewState.IdRef="Sequence_5">
+            <Sequence.Variables>
+              <Variable x:TypeArguments="scg:IEnumerable(str:Match)" Name="itemoutput2" />
+              <Variable x:TypeArguments="x:String" Name="stringRegx2">
+                <Variable.Default>
+                  <Literal x:TypeArguments="x:String">\b(\w*Order\w*)\b|\b(\w*missed\w*)\b|\b(\w*confirmed\w*)\b</Literal>
+                </Variable.Default>
+              </Variable>
+              <Variable x:TypeArguments="x:String" Name="variable1" />
+              <Variable x:TypeArguments="x:String" Name="Output3" />
+              <Variable x:TypeArguments="x:String" Name="Output4" />
+            </Sequence.Variables>
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <ui:Matches sap:VirtualizedContainerService.HintSize="497,59" sap2010:WorkflowViewState.IdRef="Matches_2" Input="[strnginput]" IsBuilderTabModified="False" Pattern="[stringRegx2]" RegexOption="IgnoreCase, Compiled" Result="[itemoutput2]" />
+            <Assign sap:VirtualizedContainerService.HintSize="497,60" sap2010:WorkflowViewState.IdRef="Assign_2">
+              <Assign.To>
+                <OutArgument x:TypeArguments="x:String">[Output2]</OutArgument>
+              </Assign.To>
+              <Assign.Value>
+                <InArgument x:TypeArguments="x:String">[itemoutput2(0).value]</InArgument>
+              </Assign.Value>
+            </Assign>
+            <Assign sap:VirtualizedContainerService.HintSize="497,60" sap2010:WorkflowViewState.IdRef="Assign_3">
+              <Assign.To>
+                <OutArgument x:TypeArguments="x:String">[Output3]</OutArgument>
+              </Assign.To>
+              <Assign.Value>
+                <InArgument x:TypeArguments="x:String">[itemoutput2(1).value]</InArgument>
+              </Assign.Value>
+            </Assign>
+            <Assign sap:VirtualizedContainerService.HintSize="497,60" sap2010:WorkflowViewState.IdRef="Assign_4">
+              <Assign.To>
+                <OutArgument x:TypeArguments="x:String">[Output4]</OutArgument>
+              </Assign.To>
+              <Assign.Value>
+                <InArgument x:TypeArguments="x:String">[Output2 &amp; Output3]</InArgument>
+              </Assign.Value>
+            </Assign>
+            <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" DisplayName="Message Box" sap:VirtualizedContainerService.HintSize="497,59" sap2010:WorkflowViewState.IdRef="MessageBox_12" Text="[Output4]" />
+            <Switch x:TypeArguments="x:String" DisplayName="Switch&lt;String&gt;" Expression="[Output4]" sap:VirtualizedContainerService.HintSize="497,264" sap2010:WorkflowViewState.IdRef="Switch`1_3">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" x:Key="Orderconfirmed" DisplayName="Message Box" sap:VirtualizedContainerService.HintSize="334,59" sap2010:WorkflowViewState.IdRef="MessageBox_5" Text="[&quot;Order is confirmed&quot;]" />
+              <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" x:Key="Ordermissed" DisplayName="Message Box" sap:VirtualizedContainerService.HintSize="334,59" sap2010:WorkflowViewState.IdRef="MessageBox_6" Text="[&quot;your order is missed&quot;]" />
+            </Switch>
+          </Sequence>
           <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" x:Key="Return" sap:VirtualizedContainerService.HintSize="334,59" sap2010:WorkflowViewState.IdRef="MessageBox_4" Text="[&quot;Accept your return item&quot;]" />
         </Switch>
       </Sequence>
