@@ -1,6 +1,6 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="Keyword_match1" mva:VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="841,651" sap2010:WorkflowViewState.IdRef="Keyword_match1_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:str="clr-namespace:System.Text.RegularExpressions;assembly=System" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="Keyword_match1" mva:VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="841,750" sap2010:WorkflowViewState.IdRef="Keyword_match1_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:str="clr-namespace:System.Text.RegularExpressions;assembly=System" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <TextExpression.NamespacesForImplementation>
-    <scg:List x:TypeArguments="x:String" Capacity="21">
+    <scg:List x:TypeArguments="x:String" Capacity="22">
       <x:String>System.Activities</x:String>
       <x:String>System.Activities.Statements</x:String>
       <x:String>System.Activities.Expressions</x:String>
@@ -22,10 +22,11 @@
       <x:String>UiPath.Core</x:String>
       <x:String>UiPath.Core.Activities</x:String>
       <x:String>System.Windows.Markup</x:String>
+      <x:String>System.Text.RegularExpressions</x:String>
     </scg:List>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
-    <scg:List x:TypeArguments="AssemblyReference" Capacity="16">
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="23">
       <AssemblyReference>System.Activities</AssemblyReference>
       <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
       <AssemblyReference>mscorlib</AssemblyReference>
@@ -42,31 +43,38 @@
       <AssemblyReference>System.Xaml</AssemblyReference>
       <AssemblyReference>UiPath.System.Activities</AssemblyReference>
       <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
+      <AssemblyReference>System.ValueTuple</AssemblyReference>
+      <AssemblyReference>UiPath.Excel</AssemblyReference>
+      <AssemblyReference>UiPath.CV</AssemblyReference>
+      <AssemblyReference>UiPath.Mail</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="Keyword_match1" sap:VirtualizedContainerService.HintSize="621,944" sap2010:WorkflowViewState.IdRef="Sequence_3">
+  <Sequence DisplayName="Keyword_match1" sap:VirtualizedContainerService.HintSize="539,656" sap2010:WorkflowViewState.IdRef="Sequence_3">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="order">
         <Variable.Default>
-          <Literal x:TypeArguments="x:String">Collect my goods Delivery</Literal>
+          <Literal x:TypeArguments="x:String">Collect order</Literal>
         </Variable.Default>
       </Variable>
       <Variable x:TypeArguments="scg:IEnumerable(str:Match)" Name="order_Result" />
       <Variable x:TypeArguments="x:String" Name="order_input">
         <Variable.Default>
-          <Literal x:TypeArguments="x:String">\b(\w*return\w*)\b|\b(\w*Delivery\w*)\b|\b(\w*shipment\w*)\b|\b(\w*Delayed\w*)\b|\b(\w*collect\w*)\b</Literal>
+          <Literal x:TypeArguments="x:String">\b(\w*order\w*)\b</Literal>
         </Variable.Default>
       </Variable>
       <Variable x:TypeArguments="x:String" Name="output" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
-        <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
         <x:Boolean x:Key="IsPinned">False</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:Matches BuilderPattern="\b(\w*I missed the delivery of my order today. What should I do\w*)\b" sap:VirtualizedContainerService.HintSize="579,59" sap2010:WorkflowViewState.IdRef="Matches_2" Input="[order]" IsBuilderTabModified="True" Model="[{&quot;Index&quot;:0,&quot;OperationID&quot;:&quot;ADV&quot;,&quot;OperationName&quot;:&quot;Advanced&quot;,&quot;OperationValue&quot;:&quot;\\b(\\w*I missed the delivery of my order today. What should I do\\w*)\\b&quot;,&quot;QuantifierFirstValue&quot;:&quot;1&quot;,&quot;QuantifierID&quot;:&quot;EXT&quot;,&quot;QuantifierName&quot;:&quot;Exactly&quot;,&quot;QuantifierSecondValue&quot;:null}]" Pattern="[order_input]" RegexOption="IgnoreCase" Result="[order_Result]" />
-    <Assign sap:VirtualizedContainerService.HintSize="579,60" sap2010:WorkflowViewState.IdRef="Assign_2">
+    <ui:Matches BuilderPattern="\b(\w*I missed the delivery of my order today. What should I do\w*)\b" sap:VirtualizedContainerService.HintSize="497,59" sap2010:WorkflowViewState.IdRef="Matches_2" Input="[order]" IsBuilderTabModified="True" Model="[{&quot;Index&quot;:0,&quot;OperationID&quot;:&quot;ADV&quot;,&quot;OperationName&quot;:&quot;Advanced&quot;,&quot;OperationValue&quot;:&quot;\\b(\\w*I missed the delivery of my order today. What should I do\\w*)\\b&quot;,&quot;QuantifierFirstValue&quot;:&quot;1&quot;,&quot;QuantifierID&quot;:&quot;EXT&quot;,&quot;QuantifierName&quot;:&quot;Exactly&quot;,&quot;QuantifierSecondValue&quot;:null}]" Pattern="[order_input]" RegexOption="IgnoreCase" Result="[order_Result]" />
+    <Assign sap:VirtualizedContainerService.HintSize="497,60" sap2010:WorkflowViewState.IdRef="Assign_2">
       <Assign.To>
         <OutArgument x:TypeArguments="x:String">[output]</OutArgument>
       </Assign.To>
@@ -74,59 +82,72 @@
         <InArgument x:TypeArguments="x:String">[order_Result(0).value]</InArgument>
       </Assign.Value>
     </Assign>
-    <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="579,51" sap2010:WorkflowViewState.IdRef="CommentOut_2">
-      <ui:CommentOut.Body>
-        <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="376,184" sap2010:WorkflowViewState.IdRef="Sequence_5">
-          <sap:WorkflowViewStateService.ViewState>
-            <scg:Dictionary x:TypeArguments="x:String, x:Object">
-              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-            </scg:Dictionary>
-          </sap:WorkflowViewStateService.ViewState>
-          <ui:InputDialog Options="{x:Null}" DisplayName="Input Dialog" sap:VirtualizedContainerService.HintSize="334,92" sap2010:WorkflowViewState.IdRef="InputDialog_5" IsPassword="False" Label="What issues you facing " Title="Enter your Problem">
-            <ui:InputDialog.Result>
-              <OutArgument x:TypeArguments="x:String">[order]</OutArgument>
-            </ui:InputDialog.Result>
-            <sap:WorkflowViewStateService.ViewState>
-              <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                <x:Boolean x:Key="IsPinned">False</x:Boolean>
-              </scg:Dictionary>
-            </sap:WorkflowViewStateService.ViewState>
-          </ui:InputDialog>
-        </Sequence>
-      </ui:CommentOut.Body>
-      <sap:WorkflowViewStateService.ViewState>
-        <scg:Dictionary x:TypeArguments="x:String, x:Object">
-          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-          <x:Boolean x:Key="IsPinned">False</x:Boolean>
-        </scg:Dictionary>
-      </sap:WorkflowViewStateService.ViewState>
-    </ui:CommentOut>
-    <Switch x:TypeArguments="x:String" DisplayName="Switch" Expression="[output]" sap:VirtualizedContainerService.HintSize="579,562" sap2010:WorkflowViewState.IdRef="Switch`1_2">
-      <Switch.Default>
-        <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" DisplayName="Message Box" sap:VirtualizedContainerService.HintSize="334,59" sap2010:WorkflowViewState.IdRef="MessageBox_8" Text="[&quot;Wrong Input&quot;]" />
-      </Switch.Default>
-      <sap:WorkflowViewStateService.ViewState>
-        <scg:Dictionary x:TypeArguments="x:String, x:Object">
-          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-          <x:Boolean x:Key="IsPinned">False</x:Boolean>
-        </scg:Dictionary>
-      </sap:WorkflowViewStateService.ViewState>
-      <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" x:Key="return" sap:VirtualizedContainerService.HintSize="334,59" sap2010:WorkflowViewState.IdRef="MessageBox_3" Text="[&quot;The courier service delivering your order usually tries to deliver on the next business day in case you miss a delivery.You can check your SMS for more details on when the courier service will try to deliver again.&quot;]" />
-      <Sequence x:Key="collect Delivery" sap:VirtualizedContainerService.HintSize="539,312" sap2010:WorkflowViewState.IdRef="Sequence_6">
+    <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" DisplayName="Message Box" sap:VirtualizedContainerService.HintSize="497,59" sap2010:WorkflowViewState.IdRef="MessageBox_18" Text="[output]" />
+    <Switch x:TypeArguments="x:String" DisplayName="Switch" Expression="[output]" sap:VirtualizedContainerService.HintSize="497,266" sap2010:WorkflowViewState.IdRef="Switch`1_6">
+      <Sequence x:Key="order" sap:VirtualizedContainerService.HintSize="539,799" sap2010:WorkflowViewState.IdRef="Sequence_8">
+        <Sequence.Variables>
+          <Variable x:TypeArguments="scg:IEnumerable(str:Match)" Name="order_Result1" />
+          <Variable x:TypeArguments="x:String" Name="order1">
+            <Variable.Default>
+              <Literal x:TypeArguments="x:String">I want order return my product</Literal>
+            </Variable.Default>
+          </Variable>
+          <Variable x:TypeArguments="x:String" Name="order_input1">
+            <Variable.Default>
+              <Literal x:TypeArguments="x:String">\b(\w*return\w*)\b|\b(\w*Collect\w*)\b|\b(\w*Delivery\w*)\b|\b(\w*Delayed\w*)\b|\b(\w*shipment\w*)\b</Literal>
+            </Variable.Default>
+          </Variable>
+          <Variable x:TypeArguments="x:String" Name="output1" />
+          <Variable x:TypeArguments="x:String" Name="output2" />
+          <Variable x:TypeArguments="x:String" Name="output4" />
+        </Sequence.Variables>
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
-        <Switch x:TypeArguments="x:Int32" DisplayName="Switch" sap:VirtualizedContainerService.HintSize="497,220" sap2010:WorkflowViewState.IdRef="Switch`1_3">
+        <ui:Matches sap:VirtualizedContainerService.HintSize="497,59" sap2010:WorkflowViewState.IdRef="Matches_3" Input="[order1]" IsBuilderTabModified="False" Pattern="[order_input1]" RegexOption="IgnoreCase, Compiled" Result="[order_Result1]" />
+        <Assign sap:VirtualizedContainerService.HintSize="497,60" sap2010:WorkflowViewState.IdRef="Assign_6">
+          <Assign.To>
+            <OutArgument x:TypeArguments="x:String">[output1]</OutArgument>
+          </Assign.To>
+          <Assign.Value>
+            <InArgument x:TypeArguments="x:String">[order_Result1(0).value]</InArgument>
+          </Assign.Value>
+        </Assign>
+        <Assign sap:VirtualizedContainerService.HintSize="497,60" sap2010:WorkflowViewState.IdRef="Assign_7">
+          <Assign.To>
+            <OutArgument x:TypeArguments="x:String">[output2]</OutArgument>
+          </Assign.To>
+          <Assign.Value>
+            <InArgument x:TypeArguments="x:String">[order_Result1(0).value]</InArgument>
+          </Assign.Value>
+        </Assign>
+        <Assign sap:VirtualizedContainerService.HintSize="497,60" sap2010:WorkflowViewState.IdRef="Assign_5">
+          <Assign.To>
+            <OutArgument x:TypeArguments="x:String">[output4]</OutArgument>
+          </Assign.To>
+          <Assign.Value>
+            <InArgument x:TypeArguments="x:String">[output1 &amp; output2]</InArgument>
+          </Assign.Value>
+        </Assign>
+        <Switch x:TypeArguments="x:String" DisplayName="Switch" Expression="[output4]" sap:VirtualizedContainerService.HintSize="497,308" sap2010:WorkflowViewState.IdRef="Switch`1_5">
           <Switch.Default>
-            <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" sap:VirtualizedContainerService.HintSize="334,59" sap2010:WorkflowViewState.IdRef="MessageBox_4" Text="[&quot;Couriers make sure that the delivery is re-attempted the next working day if you can't collect your order the first time.&quot;]" />
+            <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" DisplayName="Message Box" sap:VirtualizedContainerService.HintSize="334,59" sap2010:WorkflowViewState.IdRef="MessageBox_14" Text="[&quot;Wrong Input&quot;]" />
           </Switch.Default>
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" x:Key="orderreturn" sap:VirtualizedContainerService.HintSize="334,59" sap2010:WorkflowViewState.IdRef="MessageBox_10" Text="[&quot;The courier service delivering your order usually tries to deliver on the next business day in case you miss a delivery.You can check your SMS for more details on when the courier service will try to deliver again.&quot;]" />
+          <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" x:Key="orderCollectDelivery" sap:VirtualizedContainerService.HintSize="334,59" sap2010:WorkflowViewState.IdRef="MessageBox_19" Text="[&quot;Couriers make sure that the delivery is re-attempted the next working day if you can't collect your order the first time.&quot;]" />
+          <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" x:Key="orderDelayed" sap:VirtualizedContainerService.HintSize="334,59" sap2010:WorkflowViewState.IdRef="MessageBox_12" Text="[&quot;On the rare occasion that your order is delayed, please check your email &amp; messages for updates. A new delivery timeframe will be shared with you and you can also track its status by visiting My Orders.&quot;]" />
+          <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" x:Key="ordershipment" sap:VirtualizedContainerService.HintSize="334,59" sap2010:WorkflowViewState.IdRef="MessageBox_13" Text="[&quot;As per company policy, a shipment can't be opened before delivery, but you can accept the shipment and get in touch with us later in case you have any concerns.&quot;]" />
         </Switch>
       </Sequence>
-      <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" x:Key="Delayed" sap:VirtualizedContainerService.HintSize="334,59" sap2010:WorkflowViewState.IdRef="MessageBox_5" Text="[&quot;On the rare occasion that your order is delayed, please check your email &amp; messages for updates. A new delivery timeframe will be shared with you and you can also track its status by visiting My Orders.&quot;]" />
-      <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" x:Key="shipment" sap:VirtualizedContainerService.HintSize="334,59" sap2010:WorkflowViewState.IdRef="MessageBox_7" Text="[&quot;As per company policy, a shipment can't be opened before delivery, but you can accept the shipment and get in touch with us later in case you have any concerns.&quot;]" />
+      <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" x:Key="cancel" sap:VirtualizedContainerService.HintSize="334,59" sap2010:WorkflowViewState.IdRef="MessageBox_21" Text="[&quot;cancellation product&quot;]" />
     </Switch>
   </Sequence>
 </Activity>
