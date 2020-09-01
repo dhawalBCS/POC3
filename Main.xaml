@@ -82,7 +82,11 @@
       <Variable x:TypeArguments="s:String[]" Default="[{ &quot; &quot; , &quot; &quot; }]" Name="value8_1" />
       <Variable x:TypeArguments="s:String[]" Default="[{&quot;Flipkart&quot;}]" Name="value9" />
       <Variable x:TypeArguments="s:String[]" Default="[{&quot;order&quot;, &quot;large&quot;, &quot;quantities&quot;, &quot;product&quot;, &quot;part&quot; , &quot;corporate&quot;}]" Name="values11" />
-      <Variable x:TypeArguments="s:String[]" Default="[{&quot;corporate&quot;,&quot;mobile &quot;, &quot;tablets&quot;,&quot;order&quot;}]" Name="value11" />
+      <Variable x:TypeArguments="s:String[]" Name="value11">
+        <Variable.Default>
+          <mva:VisualBasicValue x:TypeArguments="s:String[]" ExpressionText="{}{&quot;mobile &quot;, &quot;tablets&quot;}" />
+        </Variable.Default>
+      </Variable>
       <Variable x:TypeArguments="s:String[]" Default="[{&quot;label&quot;,&quot;my&quot;,&quot;saved&quot;,&quot;cards&quot;}]" Name="values12" />
       <Variable x:TypeArguments="s:String[]" Default="[{&quot; &quot;}]" Name="value12" />
       <Variable x:TypeArguments="s:String[]" Default="[{&quot;card&quot;,&quot;label&quot;}]" Name="values13" />
