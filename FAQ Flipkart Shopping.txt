@@ -59,3 +59,114 @@ Why do I see different prices for books with the same title?
 Can I club my orders from different sellers to be delivered together?
 
 Why do I see a 'delivery charge'?
+
+
+
+
+
+___________________________________________________________________________________________________________________________
+
+
+
+
+1.Why do I see different prices for the same product?
+values5.All(function(x) subject.Contains(x))
+(?=.*different)(?=.*prices)
+{"different","prices","same","product"}
+{"do" , " i" , "prices"}
+
+
+2.Is installation offered for all products?
+values6.All(function(x) subject.Contains(x))
+(?=.*installation)(?=.*offered)
+{"installation","offered","all"}
+{ "all", "products" }
+
+
+3.Is it necessary to have an account to shop on Flipkart?
+Is it necessary to have an account to shop 
+values7.All(function(x) subject.Contains(x))
+(?=.*necessary)(?=.*account)
+{"necessary","account","to","shop"}
+{ "shop", "all" ,"devices"}
+
+
+Is it necessary to have an account to shop on ecomerce site
+values7_1.All(function(x) subject.Contains(x))
+(?=.*necessary)(?=.*shop)
+{"necessary","shop"}
+
+
+4.What does 'Preorder' or 'Forthcoming' mean?
+
+values8.All(function(x) subject.Contains(x))
+(?=.*'Preorder)(?=.*mean)
+values8
+{"Preorder","Forthcoming","mean"}
+
+Any 
+
+if blank
+{" "} --------run
+
+
+
+{"Preorder","mean" ,"return","product","to","the"}
+
+
+
+values8_1.All(function(x) subject.Contains(x))
+(?=.*Forthcoming)(?=.*mean)
+{"Forthcoming","mean"}
+
+
+5.Do sellers on Flipkart ship internationally?
+values9.All(function(x) subject.Contains(x))
+(?=.*'ship)(?=.*internationally)
+
+{"sellers", "ship","internationally"}
+{"What","Forthcoming","mean"}
+
+
+6.Can I use an item that has been given to me as a gift from a state sponsored or an NGO-funded freebie distribution programme to get discounts through exchange offers?
+
+
+
+______________________________________________________________________________________________________________
+
+
+
+5.Do sellers on Flipkart ship internationally?
+Do sellers on Flipkart ship internationally
+values9.All(function(x) subject.Contains(x)) 
+{"sellers", "ship","internationally"}--------------------------->>>>>>this keyword compusory in the subject ; not use extra keyword if we use not mentioned keywords then its not working 
+						...............keywords compare with the subject 	
+and
+
+value10.Any(function(x) subject.Contains(x))
+{"Forthcoming","mean","Flipkart"}----------------->>>>>>"Flipkart" key word is present in subject then is run / executed successfully.
+{"Forthcoming","mean"} ------------------------------->>>>>not run beacause there are keywords Missing  in subject.
+
+____________________________________________________________________________________________________________
+
+
+
+Auditing Material :
+
+purchase 
+sell
+
+Date AG(2 years not get money its called Loss) Auditing
+
+income 
+out
+
+
+
+
+
+
+
+
+
+

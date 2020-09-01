@@ -97,8 +97,58 @@ OR
 
 
 
+________________________________________________________________________________________________________
 
 
 
+text - "I missed my order.what should i do"
+pattern - "(?=.*missed)(?=.*long)"-------------> many keyword to be set
+values - {"delivery","missed"} -----------------> only two keywords
+
+
+
+
+1.If I request for a replacement, when will I get it?
+request for replacement
+Visit My Orders to check the status of your replacement.In most locations, the replacement item is delivered to you at the time of pick-up. In all other areas, the replacement is initiated after the originally delivered item is picked up. Please check the SMS & email we send you for your replacement request for more details.
+
+"(?=.*request)(?=.*replacement)(?=.*when)(?=.*get)(?=.*long)"
+{"request","replacement","get"}
+
+values all
+value any get
+
+
+"(?=.*request)(?=.*replacement)(?=.*long)"
+{"request","replacement"}
+
+
+2.Which products are not eligible for returns?
+not eligible returns
+The following table contains a list of products that are not eligible for returns as per the seller’s Returns Policy : Category : Products that can’t be returned
+"(?=.*not)(?=.*eligible)(?=.*returns)(?=.*long)"
+{"not","eligible","returns"}
+{"returns","products"}
+
+
+3.Can items be returned after the time period mentioned in the seller's Returns Policy?
+items be returned after the time period mentioned in the seller's Returns Policy
+"(?=.*returned)(?=.*after)(?=.*period)(?=.*Policy)"
+{"returned","after","period","Policy"}
+{"items" ,"time","Return"}
+
+4.Do I have to return the freebie when I return a product?
+to return the freebie
+values3.All(function(x) subject.Contains(x))
+(?=.*return)(?=.*freebie)
+{"return","freebie"}
+{"return","product","to","the"}
+
+5.How do returns work?
+How do returns work
+values4.All(function(x) subject.Contains(x))
+(?=.*How)(?=.*work)
+{"How","work"}
+{" ", " "}
 
 

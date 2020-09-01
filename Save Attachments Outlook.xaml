@@ -59,7 +59,7 @@
         <x:Boolean x:Key="IsPinned">False</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:GetOutlookMailMessages Filter="{x:Null}" TimeoutMS="{x:Null}" Account="dhawal.bharambe@walsystems.com" DisplayName="Get Outlook Mail Messages" GetAttachements="False" sap:VirtualizedContainerService.HintSize="833,22" sap2010:WorkflowViewState.IdRef="GetOutlookMailMessages_1" MailFolder="Inbox" MarkAsRead="True" Messages="[listmail]" OnlyUnreadMessages="True" Top="5" />
+    <ui:GetOutlookMailMessages Account="{x:Null}" Filter="{x:Null}" TimeoutMS="{x:Null}" DisplayName="Get Outlook Mail Messages" GetAttachements="False" sap:VirtualizedContainerService.HintSize="833,22" sap2010:WorkflowViewState.IdRef="GetOutlookMailMessages_1" MailFolder="Inbox" MarkAsRead="False" Messages="[listmail]" OnlyUnreadMessages="True" Top="1" />
     <ui:ForEach x:TypeArguments="snm:MailMessage" CurrentIndex="{x:Null}" DisplayName="For Each" sap:VirtualizedContainerService.HintSize="833,652" sap2010:WorkflowViewState.IdRef="ForEach`1_3" Values="[listmail]">
       <ui:ForEach.Body>
         <ActivityAction x:TypeArguments="snm:MailMessage">
@@ -84,7 +84,7 @@
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
                   <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" DisplayName="Message Box" sap:VirtualizedContainerService.HintSize="334,59" sap2010:WorkflowViewState.IdRef="MessageBox_2" Text="[&quot;Attachments Found &quot; + item.Subject]" />
-                  <ui:SaveMailAttachments Attachments="{x:Null}" DisplayName="Save Attachments" Filter=".xlsx" FolderPath="E:\BCS PUNE\POC\POC3 - FlipKart Question And Answer\Attachment Mail" sap:VirtualizedContainerService.HintSize="334,87" sap2010:WorkflowViewState.IdRef="SaveMailAttachments_2" Message="[item]">
+                  <ui:SaveMailAttachments Attachments="{x:Null}" DisplayName="Save Attachments" FolderPath="E:\BCS PUNE\POC\POC3 - FlipKart Question And Answer\Attachment Mail" sap:VirtualizedContainerService.HintSize="334,87" sap2010:WorkflowViewState.IdRef="SaveMailAttachments_2" Message="[item]">
                     <sap:WorkflowViewStateService.ViewState>
                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                         <x:Boolean x:Key="IsPinned">False</x:Boolean>
